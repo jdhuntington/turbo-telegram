@@ -1,5 +1,9 @@
 import * as React from "react";
 export const ThemeContext = React.createContext({});
-export const ThemeProvider = (p: any) => (
+interface Props {
+  children: any;
+  theme: {};
+}
+export const ThemeProvider = (p: Props) => (
   <ThemeContext.Provider value={p.theme}>{p.children}</ThemeContext.Provider>
 );
