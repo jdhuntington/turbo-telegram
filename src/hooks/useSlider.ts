@@ -1,8 +1,9 @@
-import { useState, useRef, useCallback } from "react";
+import { useCallback, useRef, useState } from "react";
+
 import { useControlledState } from "./general/useControlledState";
 import { useWindowEvent } from "./general/useWindowEvent";
 
-export interface ISliderProps {
+export interface SliderProps {
   min?: number;
   max?: number;
   step?: number;
@@ -14,7 +15,7 @@ export interface ISliderProps {
   onChange?: (ev: MouseEvent | KeyboardEvent, value: number) => void;
 }
 
-export interface ISliderState {
+export interface SliderState {
   min: number;
   max: number;
   value: number;
@@ -25,7 +26,7 @@ export interface ISliderState {
   onKeyDown: React.KeyboardEventHandler;
 }
 
-export interface ISliderSlotProps {
+export interface SliderSlotProps {
   /** Intended to contain the slidre */
   root: {};
   /** Intended to provide a track space for the thumb to slide on */
@@ -36,7 +37,14 @@ export interface ISliderSlotProps {
   thumb: {};
 }
 
-function _getDragValues(ev: any, containerRect: any, min: any, max: any, step: any, snapToStep: any) {
+function _getDragValues(
+  ev: any,
+  containerRect: any,
+  min: any,
+  max: any,
+  step: any,
+  snapToStep: any
+) {
   const range = max - min;
   const percentage = Math.min(
     1,
@@ -55,7 +63,7 @@ function _getDragValues(ev: any, containerRect: any, min: any, max: any, step: a
  *
  * https://www.w3.org/TR/2017/REC-wai-aria-1.1-20171214/#slider
  */
-export const useSliderState = (userProps: ISliderProps) => {
+export const useSliderState = (userProps: SliderProps) => {
   const {
     min = 0,
     max = 100,
@@ -164,9 +172,9 @@ export const useSliderState = (userProps: ISliderProps) => {
 };
 
 export const useSliderSlots: (
-  props: ISliderProps,
-  state: ISliderState
-) => ISliderSlotProps = (props: ISliderProps, state: ISliderState) => {
+  props: SliderProps,
+  state: SliderState
+) => SliderSlotProps = (props: SliderProps, state: SliderState) => {
   const {
     min,
     max,

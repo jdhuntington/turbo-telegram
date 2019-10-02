@@ -1,10 +1,11 @@
+import "./styles.css";
+
 import * as React from "react";
 import { render } from "react-dom";
-import "./styles.css";
-import { default as styled, ThemeProvider } from "styled-components";
-import {  ExSlider } from "./Slider";
-import { SliderTheme } from "./SliderTheme";
+import { ThemeProvider } from "styled-components";
 
+import { ExSlider, Slider } from "./Slider";
+import { SliderTheme } from "./SliderTheme";
 
 const theme = {
   colors: {
@@ -28,28 +29,9 @@ const theme = {
     inputBorderRadius: "2px"
   },
   components: {
-    ...SliderTheme,
-
-    SpinButton: {
-      slots: {
-        prefix: styled.div`
-          display: flex;
-          align-items: center;
-          align-self: stretch;
-          background-color: #eee;
-          padding: 0 8px;
-          font-size: 12px;
-        `
-      }
-    }
+    ...SliderTheme
   }
 };
-
-const Spacer = styled.div`
-  margin: 10px;
-  background: #ccc;
-  height: 400px;
-`;
 
 const App = () => {
   const [value, setValue] = React.useState(10);
@@ -64,9 +46,17 @@ const App = () => {
           step={1}
           snapToStep={false}
           value={value}
-          onChange={(ev, val) => setValue(val)}
+          onChange={(ev: any, val: any) => setValue(val)}
         />
-        <Spacer style={{ height: value }} />
+
+        <Slider
+          min={0}
+          max={500}
+          step={1}
+          snapToStep={false}
+          value={value}
+          onChange={(ev: any, val: any) => setValue(val)}
+        />
       </div>
     </ThemeProvider>
   );

@@ -1,10 +1,7 @@
 import * as React from "react";
+
 import { composed } from "./composed";
-import {
-  useSliderState,
-  useSliderSlots,
-  ISliderProps
-} from "./hooks/useSlider";
+import { SliderProps, useSliderSlots, useSliderState } from "./hooks/useSlider";
 
 // Focus of the view is provide order and conditionals for the slots, and to mix props into the right places.
 const view = ({ Slots, slotProps }: any) => {
@@ -18,7 +15,7 @@ const view = ({ Slots, slotProps }: any) => {
   );
 };
 
-export const Slider = composed<ISliderProps>({
+export const Slider = composed<SliderProps>({
   name: "Slider",
   slots: {
     root: "div",
@@ -31,7 +28,7 @@ export const Slider = composed<ISliderProps>({
   view
 } as any);
 
-export const ExSlider = composed<ISliderProps>(Slider as any, {
+export const ExSlider = composed<SliderProps>(Slider as any, {
   name: "Slider",
   slots: {
     thumb: (p: any) => {
