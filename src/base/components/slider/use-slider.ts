@@ -76,7 +76,7 @@ export const useSliderState = (userProps: SliderProps) => {
   } = userProps;
   const [dragging, setDragging] = useState(false);
   const [value, setValue] = useControlledState(controlledValue, defaultValue);
-  const [dragState] = useState({
+  const [dragState, setDragState] = useState({
     trackRect: null
   });
   const trackRef = useRef(null);
@@ -94,37 +94,49 @@ export const useSliderState = (userProps: SliderProps) => {
     [onChange, setValue]
   );
 
-  const onMouseDown = (ev: any) => {
-    dragState.trackRect = (trackRef.current as any).getBoundingClientRect();
-    setDragging(true);
-    onMouseMove(ev, true);
-  };
+  const onMouseMove = useCallback(
+    (ev: any, allowDefault: any) => {
+      if (dragState && dragState.trackRect) {
+        const drag = _getDragValues(
+          ev,
+          dragState.trackRect,
+          min,
+          max,
+          step,
+          snapToStep
+        );
 
-  const onMouseMove = (ev: any, allowDefault: any) => {
-    const drag = _getDragValues(
-      ev,
-      dragState.trackRect,
-      min,
-      max,
-      step,
-      snapToStep
-    );
+        _updateValue(ev, drag.value);
+      }
 
-    _updateValue(ev, drag.value);
+      if (!allowDefault) {
+        ev.preventDefault();
+        ev.stopPropagation();
+      }
+    },
+    [_getDragValues, dragState, min, max, step, snapToStep, _updateValue]
+  );
 
-    if (!allowDefault) {
+  const onMouseDown = useCallback(
+    (ev: any) => {
+      setDragState({
+        trackRect: (trackRef.current as any).getBoundingClientRect()
+      });
+      setDragging(true);
+      onMouseMove(ev, true);
+    },
+    [onMouseMove, setDragging, dragState, setDragState, trackRef]
+  );
+
+  const onMouseUp = useCallback(
+    (ev: any) => {
+      setDragging(false);
+
       ev.preventDefault();
       ev.stopPropagation();
-    }
-  };
-
-  const onMouseUp = (ev: any) => {
-    const range = max - min;
-    setDragging(false);
-
-    ev.preventDefault();
-    ev.stopPropagation();
-  };
+    },
+    [setDragging]
+  );
 
   useWindowEvent("mousemove", dragging && onMouseMove);
   useWindowEvent("mouseup", dragging && onMouseUp);
