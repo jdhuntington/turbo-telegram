@@ -4,7 +4,7 @@ import * as React from "react";
 import { render } from "react-dom";
 import { ThemeProvider } from "./base/components/theme/theme-provider";
 
-import { ExSlider, Slider } from "./Slider";
+import { ExSlider, Slider } from "./base/components/slider/slider";
 import { SliderTheme } from "./SliderTheme";
 
 const theme = {
