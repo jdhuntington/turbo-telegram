@@ -2,36 +2,10 @@ import "./styles.css";
 
 import * as React from "react";
 import { render } from "react-dom";
-import { ThemeProvider } from "./base/components/theme/theme-provider";
 
 import { ExSlider, Slider } from "./base/components/slider/slider";
-import { SliderTheme } from "./SliderTheme";
-
-const theme = {
-  colors: {
-    inputBackground: "red"
-  },
-
-  typography: {
-    fontfaces: {
-      segoe: ""
-    },
-    sizes: {
-      lg: 24,
-      md: 12,
-      sm: 10
-    },
-    variants: {
-      body: {}
-    }
-  },
-  effects: {
-    inputBorderRadius: "2px"
-  },
-  components: {
-    ...SliderTheme
-  }
-};
+import { ThemeProvider } from "./base/components/theme/theme-provider";
+import { theme } from "./mybrand/theme";
 
 const App = () => {
   const [value, setValue] = React.useState(10);
