@@ -1,4 +1,4 @@
-import { SliderTheme } from "./../SliderTheme";
+import { SliderTheme } from "./components/slider/theme";
 
 export const theme = {
   colors: {
