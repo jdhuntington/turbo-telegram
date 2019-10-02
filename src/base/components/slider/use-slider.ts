@@ -1,7 +1,7 @@
 import { useCallback, useRef, useState } from "react";
 
 import { useControlledState } from "../../hooks/use-controlled-state";
-import { useWindowEvent } from "./../../../hooks/general/useWindowEvent";
+import { useWindowEvent } from "../../hooks/use-window-event";
 
 export interface SliderProps {
   min?: number;
