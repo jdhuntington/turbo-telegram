@@ -2,7 +2,7 @@ import "./styles.css";
 
 import * as React from "react";
 import { render } from "react-dom";
-import { ThemeProvider } from "styled-components";
+import { ThemeProvider } from "./base/components/theme/theme-provider";
 
 import { ExSlider, Slider } from "./Slider";
 import { SliderTheme } from "./SliderTheme";
