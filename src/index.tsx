@@ -40,23 +40,28 @@ const App = () => {
     <ThemeProvider theme={theme}>
       <div className="App">
         <p>Value is {value}</p>
-        <ExSlider
-          min={0}
-          max={500}
-          step={1}
-          snapToStep={false}
-          value={value}
-          onChange={(ev: any, val: any) => setValue(val)}
-        />
-
-        <Slider
-          min={0}
-          max={500}
-          step={1}
-          snapToStep={false}
-          value={value}
-          onChange={(ev: any, val: any) => setValue(val)}
-        />
+        <div className="control-examples">
+          <div className="control-example">
+            <ExSlider
+              min={0}
+              max={500}
+              step={1}
+              snapToStep={false}
+              value={value}
+              onChange={(ev: any, val: any) => setValue(val)}
+            />
+          </div>
+          <div className="control-example">
+            <Slider
+              min={0}
+              max={500}
+              step={1}
+              snapToStep={false}
+              value={value}
+              onChange={(ev: any, val: any) => setValue(val)}
+            />
+          </div>
+        </div>
       </div>
     </ThemeProvider>
   );
