@@ -4,7 +4,7 @@ import {
   useSliderState,
   useSliderSlots,
   ISliderProps
-} from "././hooks/useSlider";
+} from "./hooks/useSlider";
 
 // Focus of the view is provide order and conditionals for the slots, and to mix props into the right places.
 const view = ({ Slots, slotProps }: any) => {

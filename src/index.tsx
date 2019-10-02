@@ -1,12 +1,10 @@
 import * as React from "react";
 import { render } from "react-dom";
-import { initializeIcons } from "office-ui-fabric-react";
 import "./styles.css";
 import { default as styled, ThemeProvider } from "styled-components";
 import {  ExSlider } from "./Slider";
 import { SliderTheme } from "./SliderTheme";
 
-initializeIcons();
 
 const theme = {
   colors: {
@@ -62,13 +60,13 @@ const App = () => {
         <p>Value is {value}</p>
         <ExSlider
           min={0}
-          max={50}
-          step={2}
+          max={500}
+          step={1}
           snapToStep={false}
           value={value}
           onChange={(ev, val) => setValue(val)}
         />
-        <Spacer style={{ height: 16 * value }} />
+        <Spacer style={{ height: value }} />
       </div>
     </ThemeProvider>
   );
