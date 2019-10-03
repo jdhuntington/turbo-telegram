@@ -1,7 +1,8 @@
 import * as React from "react";
 
 import { composed } from "../../../lib/composed";
-import { SliderProps, useSliderSlots, useSliderState } from "./use-slider";
+import { useSliderSlots, useSliderState } from "./use-slider";
+import { SliderProps } from "./props";
 
 // Focus of the view is provide order and conditionals for the slots, and to mix props into the right places.
 const view = ({ Slots, slotProps }: any) => {

@@ -3,8 +3,9 @@ import "./styles.css";
 import * as React from "react";
 import { render } from "react-dom";
 
-import { ExSlider, Slider } from "./base/components/slider/slider";
+import { Slider } from "./base/components/slider/slider";
 import { ThemeProvider } from "./base/components/theme/theme-provider";
+import { ExSlider } from "./mybrand/components/slider/ex-slider";
 import { theme } from "./mybrand/theme";
 
 const App = () => {
