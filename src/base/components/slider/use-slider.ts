@@ -2,18 +2,7 @@ import { useCallback, useRef, useState } from "react";
 
 import { useControlledState } from "../../hooks/use-controlled-state";
 import { useWindowEvent } from "../../hooks/use-window-event";
-
-export interface SliderProps {
-  min?: number;
-  max?: number;
-  step?: number;
-  snapToStep?: boolean;
-  vertical?: boolean;
-  value?: number;
-  defaultValue?: number;
-
-  onChange?: (ev: MouseEvent | KeyboardEvent, value: number) => void;
-}
+import { SliderProps } from "./props";
 
 export interface SliderState {
   min: number;
