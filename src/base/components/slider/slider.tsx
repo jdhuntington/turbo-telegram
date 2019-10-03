@@ -8,6 +8,7 @@ import { SliderProps } from "./props";
 const view = ({ Slots, slotProps }: any) => {
   return (
     <Slots.root {...slotProps.root}>
+      <pre>{JSON.stringify(slotProps, null, 2)}</pre>
       <Slots.selectedTrack {...slotProps.selectedTrack} />
       <Slots.track {...slotProps.track}>
         <Slots.thumb {...slotProps.thumb} />
@@ -16,7 +17,7 @@ const view = ({ Slots, slotProps }: any) => {
   );
 };
 
-export const Slider = composed<SliderProps>({
+export const Slider = composed<SliderProps>(undefined, {
   name: "Slider",
   slots: {
     root: "div",
