@@ -28,19 +28,3 @@ export const Slider = composed<SliderProps>({
   slotProps: useSliderSlots,
   view
 } as any);
-
-export const ExSlider = composed<SliderProps>(Slider as any, {
-  name: "Slider",
-  slots: {
-    thumb: (p: any) => {
-      const Thumb = (Slider as any).thumb;
-      return (
-        <div {...p}>
-          <Thumb />
-          <div>child1</div>
-          <div>child2</div>
-        </div>
-      );
-    }
-  }
-});

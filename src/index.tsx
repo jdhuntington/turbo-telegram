@@ -5,7 +5,7 @@ import { render } from "react-dom";
 
 import { Slider } from "./base/components/slider/slider";
 import { ThemeProvider } from "./base/components/theme/theme-provider";
-import { ExSlider } from "./mybrand/components/slider/ex-slider";
+import { Slider as MyBrandSlider } from "./mybrand/components/slider/slider";
 import { theme } from "./mybrand/theme";
 
 const App = () => {
@@ -20,7 +20,7 @@ const App = () => {
         <p>Value is {value}</p>
         <div className="control-examples">
           <div className="control-example">
-            <ExSlider
+            <MyBrandSlider
               min={0}
               max={500}
               step={1}
