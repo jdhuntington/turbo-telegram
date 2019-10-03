@@ -4,13 +4,19 @@ import { Slider as BaseSlider } from "../../../base/components/slider/slider";
 import { Theme } from "./../../../lib/theme";
 import { theme as myBrandTheme } from "./../../theme";
 
-interface Tokens {
+export interface Tokens {
+  trackAfterColor: any;
   trackBeforeColor: string;
+  thumbBackgroundColor: string;
+  thumbBorderColor: string;
 }
 
-const tokens = (theme: Theme): Tokens => {
+export const tokens = (theme: Theme): Tokens => {
   return {
-    trackBeforeColor: theme.brandColor
+    trackBeforeColor: theme.brandColor,
+    thumbBackgroundColor: "white",
+    thumbBorderColor: theme.brandDarkColor,
+    trackAfterColor: "#bbc"
   };
 };
 
@@ -29,7 +35,7 @@ const styles = (theme: Theme, tokens: Tokens) => {
         position: "absolute",
         width: "100%",
         height: "4px",
-        backgroundColor: "#bbc",
+        backgroundColor: tokens.trackAfterColor,
         top: "50%",
         transform: "translateY(-50%)"
       }
@@ -57,8 +63,8 @@ const styles = (theme: Theme, tokens: Tokens) => {
       borderRadius: "16px",
       top: "50%",
       transform: "translate(-50%, -50%)",
-      backgroundColor: "white",
-      border: "2px solid rgb(96, 94, 92)"
+      backgroundColor: tokens.thumbBackgroundColor,
+      border: `2px solid ${tokens.thumbBorderColor}`
     }
   };
 };
