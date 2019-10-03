@@ -1,5 +1,5 @@
 import * as React from "react";
-import { ThemeContext } from "styled-components";
+import { ThemeContext } from "./../base/components/theme/theme-provider";
 
 /**
  * Composed allows you to create composed components, which
@@ -7,7 +7,10 @@ import { ThemeContext } from "styled-components";
  *
  * Composed components can be recomposed.
  */
-export const composed = <TProps = {}>(baseComponent: React.SFC, options?: any) => {
+export const composed = <TProps = {}>(
+  baseComponent: React.SFC,
+  options?: any
+) => {
   if (typeof baseComponent === "function" && (baseComponent as any).__options) {
     const baseOptions = (baseComponent as any).__options;
 
@@ -59,20 +62,6 @@ export const composed = <TProps = {}>(baseComponent: React.SFC, options?: any) =
 
   return Component;
 };
-
-function _resolveProps(input: any, slot: any) {
-  if (slot.toProps) {
-    return slot.toProps(input);
-  }
-
-  if (typeof input === "object" && !React.isValidElement(input)) {
-    return input;
-  }
-
-  return {
-    children: input
-  };
-}
 
 function _getSlotProps(userProps: any, slots: any, state: any, slotProps: any) {
   const resolvedState = state ? state(userProps, slots) : {};
