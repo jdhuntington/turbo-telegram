@@ -114,7 +114,16 @@ export const useSliderState = (userProps: SliderProps) => {
         ev.stopPropagation();
       }
     },
-    [_getDragValues, dragState, min, max, step, snapToStep, _updateValue]
+    [
+      _getDragValues,
+      dragging,
+      dragState,
+      min,
+      max,
+      step,
+      snapToStep,
+      _updateValue
+    ]
   );
 
   const onMouseDown = useCallback(

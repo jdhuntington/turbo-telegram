@@ -9,7 +9,10 @@ import { theme } from "./mybrand/theme";
 
 const App = () => {
   const [value, setValue] = React.useState(10);
-
+  const setValueFromEvent = React.useCallback(
+    (ev: any, val: any) => setValue(val),
+    [setValue]
+  );
   return (
     <ThemeProvider theme={theme}>
       <div className="App">
@@ -22,7 +25,7 @@ const App = () => {
               step={1}
               snapToStep={false}
               value={value}
-              onChange={(ev: any, val: any) => setValue(val)}
+              onChange={setValueFromEvent}
             />
           </div>
           <div className="control-example">
@@ -32,7 +35,7 @@ const App = () => {
               step={1}
               snapToStep={false}
               value={value}
-              onChange={(ev: any, val: any) => setValue(val)}
+              onChange={setValueFromEvent}
             />
           </div>
         </div>

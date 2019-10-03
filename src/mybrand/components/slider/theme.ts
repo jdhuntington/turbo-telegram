@@ -33,7 +33,6 @@ const selectedTrack = styled.div`
   transform: translateY(-50%);
   height: 4px;
   background-color: blue;
-  transition: width 0.1s cubic-bezier(0.1, 0.9, 0.2, 1) 0s;
 `;
 
 const thumb = styled.div`
@@ -42,7 +41,6 @@ const thumb = styled.div`
   height: 16px;
   width: 16px;
   border-radius: 16px;
-  transition: left 0.1s cubic-bezier(0.1, 0.9, 0.2, 1) 0s;
   top: 50%;
   transform: translate(-50%, -50%);
   background-color: white;
