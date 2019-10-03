@@ -46,17 +46,6 @@ const App = () => {
             />
           </div>
           <div className="control-example">
-            <h3>Slider (Base)</h3>
-            <Slider
-              min={0}
-              max={500}
-              step={1}
-              snapToStep={false}
-              value={value}
-              onChange={setValueFromEvent}
-            />
-          </div>
-          <div className="control-example">
             <h3>MostlyRedSlider</h3>
             <MostlyRedSlider
               min={0}

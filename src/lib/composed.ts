@@ -5,7 +5,6 @@ import { initializeJss } from "./jss";
 import { Theme } from "./theme";
 
 const _getClasses = (theme: Theme, name: string, optionsSet: any[]) => {
-  console.log({ theme, name, optionsSet });
   initializeJss();
   let tokens: any = {};
   optionsSet.forEach((options: any) => {
@@ -56,7 +55,7 @@ export const composed = <TProps = {}>(
   });
 
   const Component = (userProps: TProps) => {
-    const theme: Theme = (useTheme() || options.defaultTheme)!;
+    const theme: Theme = (useTheme() || (mergedOptions as any).defaultTheme)!;
     if (!theme) {
       console.warn("No theme specified, behavior undefined.");
     }
