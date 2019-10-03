@@ -8,7 +8,6 @@ import { SliderProps } from "./props";
 const view = ({ Slots, slotProps }: any) => {
   return (
     <Slots.root {...slotProps.root}>
-      <pre>{JSON.stringify(slotProps, null, 2)}</pre>
       <Slots.selectedTrack {...slotProps.selectedTrack} />
       <Slots.track {...slotProps.track}>
         <Slots.thumb {...slotProps.thumb} />

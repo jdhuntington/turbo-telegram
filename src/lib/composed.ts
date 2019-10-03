@@ -102,14 +102,28 @@ function _getSlotProps(
   name: string
 ) {
   const resolvedState = state ? state(userProps, slots) : {};
-  if (theme && !classNamesCache.has(theme)) {
-    classNamesCache.set(theme, _getClasses(theme, name, optionsSet));
-  }
+
   const resolvedSlotProps = slotProps
     ? typeof slotProps === "function"
       ? slotProps(userProps, resolvedState)
       : slotProps
     : {};
-
+  if (theme) {
+    if (!classNamesCache.has(theme)) {
+      classNamesCache.set(theme, _getClasses(theme, name, optionsSet));
+    }
+    const classNames = classNamesCache.get(theme);
+    Object.keys(classNames).forEach(k => {
+      const className = classNames[k];
+      if (!resolvedSlotProps[k]) {
+        resolvedSlotProps[k] = { className: "" };
+      } else if (!resolvedSlotProps[k].className) {
+        resolvedSlotProps[k].className = [];
+      }
+      resolvedSlotProps[
+        k
+      ].className = `${resolvedSlotProps[k].className} ${className}`;
+    });
+  }
   return resolvedSlotProps;
 }
