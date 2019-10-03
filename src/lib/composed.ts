@@ -1,5 +1,5 @@
 import * as React from "react";
-import { ThemeContext } from "./../base/components/theme/theme-provider";
+import { ThemeContext } from "./../lib/theme-context";
 
 /**
  * Composed allows you to create composed components, which

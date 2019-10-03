@@ -4,9 +4,12 @@ import * as React from "react";
 import { render } from "react-dom";
 
 import { Slider } from "./base/components/slider/slider";
-import { ThemeProvider } from "./base/components/theme/theme-provider";
 import { Slider as MyBrandSlider } from "./mybrand/components/slider/slider";
-import { theme } from "./mybrand/theme";
+import { ThemeContext } from "./lib/theme-context";
+
+const simpleTheme = {
+  brandColor: "#fac"
+};
 
 const App = () => {
   const [value, setValue] = React.useState(10);
@@ -14,12 +17,14 @@ const App = () => {
     (ev: any, val: any) => setValue(val),
     [setValue]
   );
-  return (
-    <ThemeProvider theme={theme}>
-      <div className="App">
-        <p>Value is {value}</p>
+
+  const renderControlExamples = (title: string) => {
+    return (
+      <div>
+        <h2>{title}</h2>
         <div className="control-examples">
           <div className="control-example">
+            <h3>MyBrandSlider</h3>
             <MyBrandSlider
               min={0}
               max={500}
@@ -30,6 +35,7 @@ const App = () => {
             />
           </div>
           <div className="control-example">
+            <h3>Slider (Base)</h3>
             <Slider
               min={0}
               max={500}
@@ -41,7 +47,17 @@ const App = () => {
           </div>
         </div>
       </div>
-    </ThemeProvider>
+    );
+  };
+
+  return (
+    <div className="App">
+      <p>Value is {value}</p>
+      {renderControlExamples("Unthemed (see baked-in theme)")}
+      <ThemeContext.Provider value={simpleTheme}>
+        {renderControlExamples("Simple Theme")}
+      </ThemeContext.Provider>
+    </div>
   );
 };
 

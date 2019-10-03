@@ -1,27 +1,5 @@
-import { SliderTheme } from "./components/slider/theme";
+import { Theme } from "./../lib/theme";
 
-export const theme = {
-  colors: {
-    inputBackground: "red"
-  },
-
-  typography: {
-    fontfaces: {
-      segoe: ""
-    },
-    sizes: {
-      lg: 24,
-      md: 12,
-      sm: 10
-    },
-    variants: {
-      body: {}
-    }
-  },
-  effects: {
-    inputBorderRadius: "2px"
-  },
-  components: {
-    ...SliderTheme
-  }
+export const theme: Theme = {
+  brandColor: "rgb(96, 94, 92)"
 };
